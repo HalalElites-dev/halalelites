@@ -1,33 +1,61 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
 import { Mail, MapPin, Phone, Send } from 'lucide-react'
-import  { useState } from 'react'
-import React from 'react'
+import React, { useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import z from 'zod';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { formSchema } from '@/lib/schemas';
+import { sendEmail } from '@/lib/email';
+
 
 const Page = () => {
-   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    }
   })
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // do something with the form values
+    setIsLoading(true);
+    setSubmitMessage('');
+    try {
+      const result = await sendEmail(values);
+      if (result.success) {
+        setSubmitMessage('Message sent successfully! We\'ll get back to you soon.');
+        form.reset();
+      } else {
+        setSubmitMessage('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      setSubmitMessage('An error occurred. Please try again.');
+      console.error('Error sending email:', error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
-    <section id="contact" className='relative bg-background py-24 px-6'>
+    <section id="contact" className='relative bg-background py-24 px-6 '>
       <div className='relative max-w-7xl mx-auto'>
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] rounded-full blur-3xl animate-holographic holographic-gradient opacity-5"></div>
@@ -38,7 +66,7 @@ const Page = () => {
 
         <div className='relative text-center mb-16'>
           <div className="inline-flex items-center gap-2 glass-effect rounded-full px-4 py-2 mb-6">
-            <Mail className="h-4 w-4 text-brand-primary"  />
+            <Mail className="h-4 w-4 text-brand-primary" />
             <span className="font-mono text-sm text-brand-primary">
               Contact Us
             </span>
@@ -46,11 +74,11 @@ const Page = () => {
           <h1 className='text-6xl md:text-7xl font-bold mb-8 font-sans'>Get in Touch</h1>
         </div>
 
-        <div className='relative grid lg:grid-cols-2 gap-16 items-start'>
+        <div className='relative grid lg:grid-cols-2 gap-16 items-start '>
           {/* Left Side */}
-          <div className="space-y-8 mt-6"> 
+          <div className="space-y-8 mt-6">
             <div>
-               <h2 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h2>
               <div className="space-y-4 text-muted-foreground max-w-lg font-mono">
                 <p>Send us an email and let us know everything you want out of a new site.</p>
               </div>
@@ -59,7 +87,7 @@ const Page = () => {
               {/* Phone */}
               <div className="flex items-center gap-4">
                 <div className="glass-effect p-3 rounded-lg">
-                  <Phone className="h-6 w-6"  />
+                  <Phone className="h-6 w-6" />
                 </div>
                 <div>
                   <div
@@ -88,12 +116,12 @@ const Page = () => {
               {/* Location */}
               <div className="flex items-center gap-4">
                 <div className="glass-effect p-3 rounded-lg">
-                  <MapPin className="h-6 w-6"  />
+                  <MapPin className="h-6 w-6" />
                 </div>
                 <div>
                   <div
                     className="text-lg font-mono uppercase tracking-wider mb-1"
-            
+
                   >
                     Location
                   </div>
@@ -102,93 +130,127 @@ const Page = () => {
               </div>
             </div>
           </div>
+
           {/* Right Side */}
-          <div className="glass-effect rounded-2xl p-8">
+          <div className="glass-effect rounded-2xl p-8 h-full">
             <h3 className="text-2xl font-bold font-mono mb-8 uppercase tracking-wider">Make Appointment</h3>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Field */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-mono uppercase tracking-wider mb-3">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                {/* Form Fields */}
+              <div className="space-y-8">
+                {/* Name Field */}
+                <FormField
+                  control={form.control}
                   name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Name"
-                  className="w-full px-4 py-3 bg-background/50 border  rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
-                  required
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-mono uppercase tracking-wider">
+                        Name
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Name"
+                          {...field}
+                          className="px-4 py-3 bg-background/10 border rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              {/* Email Field */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-mono uppercase tracking-wider mb-3">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
+                {/* Email Field */}
+                <FormField
+                  control={form.control}
                   name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                  className="w-full px-4 py-3 bg-background/50 border  rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
-                  required
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-mono uppercase tracking-wider">
+                        Email
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="Email"
+                          {...field}
+                          className="px-4 py-3 bg-background/0 border rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              {/* Phone Field */}
-              <div>
-                <label htmlFor="phone" className="block text-sm font-mono uppercase tracking-wider mb-3">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
+                {/* Phone Field */}
+                <FormField
+                  control={form.control}
                   name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="Phone"
-                  className="w-full px-4 py-3 bg-background/50 border  rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-mono uppercase tracking-wider">
+                        Phone
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="tel"
+                          placeholder="Phone"
+                          {...field}
+                          className="px-4 py-3 bg-background/50 border rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              {/* Message Field */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-mono uppercase tracking-wider mb-3">
-                  Message
-                </label>
-                <textarea
-                  id="message"
+                {/* Message Field */}
+                <FormField
+                  control={form.control}
                   name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="Write a message"
-                  rows={6}
-                  className="w-full px-4 py-3 bg-background/50 border  rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono resize-none"
-                  required
-                ></textarea>
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-mono uppercase tracking-wider">
+                        Message
+                      </FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Write a message"
+                          rows={6}
+                          {...field}
+                          className="px-4 py-3 bg-background/50 border rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono resize-none"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Submit message */}
+                {submitMessage &&(
+                  <div className={`text-center p-3 rounded-lg font-mono text-sm ${
+                    submitMessage.includes('successfully') 
+                      ? 'bg-green-100 text-brand-primary' 
+                      : 'bg-red-100 text-destructive'
+                  }`}>
+                    {submitMessage}
+                  </div>
+                )}
+                {/* submit button */}
+                 <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full py-4 rounded-lg font-mono text-lg transition-all flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary/90 disabled:opacity-50"
+                >
+                  {isLoading ? 'sending...' : 'send_message'}
+                  <Send className="h-5 w-5" />
+                </Button>
               </div>
-
-              {/* Submit Button */}
-              <Button
-  
-              variant={'default'}
-                type="submit"
-                className=" w-full py-4 rounded-lg font-mono text-lg transition-all flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary/90 "
-              >
-                send_message
-                <Send className="h-5 w-5" />
-              </Button>
-            </form>
+              </form>
+            </Form>
           </div>
 
-          </div>
         </div>
+      </div>
 
     </section>
   )
