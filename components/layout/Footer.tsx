@@ -1,18 +1,35 @@
 import Link from "next/link"
 import { FOOTER_TEXT, SITE_TITLE, SOCIAL_LINKS, FOOTER_LINKS } from "@/lib/constants"
-
+import Image from "next/image"
 const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="border-t py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+
           {/* Left section - Brand and description */}
           <div className="lg:col-span-1">
             <div className="flex items-center mb-4 gap-2">
-              <div className="h-8 w-8 rounded bg-gradient-to-br from-brand-primary via-brand-accent to-brand-secondary"></div>
-              <span className="text-xl font-bold">{SITE_TITLE}</span>
+              <Link href="/" className="flex items-center space-x-2">
+                <Image suppressHydrationWarning
+                  src="/LogoW.png"
+                  alt="Logo"
+                  width={160}
+                  height={32}
+                  className="block dark:hidden"
+                />
+                <Image suppressHydrationWarning
+                  src="/Logo.png"
+                  alt="Logo"
+                  width={160}
+                  height={32}
+                  className="hidden dark:block"
+                />
+              </Link>
             </div>
-            <p className="text-primary text-sm leading-relaxed mb-6 max-w-xs">{FOOTER_TEXT}</p>
+            <p className="text-primary text-sm leading-relaxed mb-6 max-w-xs font-mono">{FOOTER_TEXT}</p>
             <div className="flex items-center gap-4">
               {SOCIAL_LINKS.map((link) => (
                 <Link
@@ -31,83 +48,57 @@ const Footer = () => {
 
           {/* Navigation Columns */}
           <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {/* Product Column */}
+
+            {/* Quick Links Column */}
             <div>
-              <h3 className="font-semibold text-primary mb-4">Products</h3>
-              <ul className="space-y-3">
+              <h3 className="font-semibold text-primary mb-4 font-sans">QUICK LINKS</h3>
+              <ul className="space-y-3 font-mono ">
                 <li>
-                  <Link href="/features" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Features
+                  <Link href="/services" className=" = transition-colors text-sm hover:text-brand-primary ">
+                    ./services
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pricing" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Pricing
+                  <Link href="/ailab" className="  transition-colors text-sm hover:text-brand-primary ">
+                    ./ai-lab
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Blog
+                  <Link href="/mentorship" className="  transition-colors text-sm hover:text-brand-primary">
+                    ./mentorship
                   </Link>
                 </li>
-                <li>
-                  <Link href="/support" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Support
-                  </Link>
-                </li>
+                
               </ul>
             </div>
 
-            {/* Resources Column */}
-            <div>
-              <h3 className="font-semibold text-primary mb-4">Resources</h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/docs" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Documentation
-                  </Link>
+            {/* Company Column  */}
+             <div>
+              <h3 className="font-semibold text-primary mb-4 font-sans">Services</h3>
+              <ul className="space-y-3 font-mono  ">
+                <li className="transition-colors text-md hover:text-brand-primary">
+                  Web Design
                 </li>
-                <li>
-                  <Link href="/tutorials" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Tutorials
-                  </Link>
+                <li className="transition-colors text-md hover:text-brand-primary">
+                  Web Applications
                 </li>
-                <li>
-                  <Link href="/help" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/api" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    API
-                  </Link>
+                <li className="transition-colors text-md hover:text-brand-primary">
+                  Digital Products
                 </li>
               </ul>
             </div>
-
-            {/* Company Column - Fixed: Added missing div wrapper */}
+            {/* Coming soon */}
             <div>
-              <h3 className="font-semibold text-primary mb-4">Company</h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/about" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    About Us
-                  </Link>
+              <h3 className="font-semibold text-primary mb-4 font-sans">Coming Soon</h3>
+              <ul className="space-y-3 font-mono  ">
+                <li className="transition-colors text-md hover:text-brand-primary">
+                  AI Lab
                 </li>
-                <li>
-                  <Link href="/careers" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Careers
-                  </Link>
+                <li className="transition-colors text-md hover:text-brand-primary">
+                  Mentorship
                 </li>
-                <li>
-                  <Link href="/press" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Press
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className=" hover:text-primary transition-colors text-sm hover:underline">
-                    Contact
-                  </Link>
+                <li className="transition-colors text-md hover:text-brand-primary">
+                  Community
                 </li>
               </ul>
             </div>
@@ -116,7 +107,7 @@ const Footer = () => {
 
         {/* Bottom section - Fixed: Moved outside the main grid */}
         <div className="flex flex-col sm:flex-row justify-between items-center pt-8 mt-8 border-t border-accent-foreground">
-          <p className="text-sm  mb-4 sm:mb-0">© 2025 {SITE_TITLE}. All rights reserved.</p>
+          <p className="text-sm  mb-4 sm:mb-0">© {currentYear} {SITE_TITLE}. All rights reserved.</p>
           <div className="flex items-center gap-6">
             {FOOTER_LINKS.map((link) => (
               <Link

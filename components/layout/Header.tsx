@@ -1,52 +1,53 @@
-'use client';
-import { SITE_TITLE } from '@/lib/constants'
 import React from 'react'
 import { Button } from '../ui/button'
 import { Navigation } from './Navigation'
 import { ThemeToggle } from '../ThemeToggle'
 import { MobileMenu } from '@/components/layout/mobileMenu'
-import { scrollToSection  } from '@/lib/utils'
+import Link from 'next/link';
+import Image from 'next/image';
 
 export function Header() {
-        return (
-            <header className='sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
-                <div className='max-w-7xl flex h-16 items-center justify-between m-auto'>
+    return (
+        <nav className="fixed top-0 w-full z-50 glass-effect backdrop-blur-md">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
+                <div className="flex justify-between items-center h-16 ">
 
-                    {/* left section: Site title or logo*/}
-                    <a href="#" onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection('home');
-                    }}>
-                    <div className='flex items-center space-x-2'>
-                        <div className='h-8 w-8 rounded bg-gradient-to-br from-brand-primary via-brand-accent to-brand-secondary'></div>
-                        <span className='text-xl font-bold text-primary'>{SITE_TITLE}</span>
-                    </div>
-                    </a>
+                    {/* Left section: Logo and brand */}
+                    <Link href="/" className="flex items-center space-x-2">
+                        <Image suppressHydrationWarning
+                            src="/LogoW.png"
+                            alt="Logo"
+                            width={160}
+                            height={32}
+                            className="block dark:hidden"
+                        />
+                        <Image suppressHydrationWarning
+                            src="/Logo.png"
+                            alt="Logo"
+                            width={160}
+                            height={32}
+                            className="hidden dark:block"
+                        />
+                    </Link>
 
-
-                    {/* middle section: Desktop Navigation */}
-                    <div className="hidden md:flex"> 
+                    {/* Right section: Navigation and actions */}
+                    <div className="hidden md:flex items-center space-x-8">
                         <Navigation />
+                        <Button className="bg-brand-primary hover:bg-brand-primary/90 px-4 py-2 rounded-md text-sm font-mono transition-all ">
+                            <Link href={"/services"}>{">"} deploy_with_us</Link>
+                        </Button>
+                        <ThemeToggle />
                     </div>
 
+                    {/* Mobile menu */}
+                    <div className="md:hidden">
+                        <MobileMenu />
+                        <ThemeToggle />
 
-                    {/* Right Section: Theme Toggle, CTA Button (Desktop) & Mobile Menu (Mobile) */}
-                    <div className='flex items-center space-x-2'> 
-                        {/* Desktop Items */}
-                        <div className="hidden md:flex items-center space-x-2">
-                            <ThemeToggle />
-                            <Button className='bg-primary text-primary-foreground hover:bg-primary/90'>Get Started</Button>
-                        </div>
-
-                        {/* Mobile Menu Button */}
-                        <div className='md:hidden'>
-                            <ThemeToggle />
-                            <MobileMenu />
-                        </div>
                     </div>
-
 
                 </div>
-            </header>
-        )
+            </div>
+        </nav>
+    )
 }

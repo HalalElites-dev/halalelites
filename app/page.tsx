@@ -1,19 +1,16 @@
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
-import CTASection from "@/components/sections/CTASection";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
-import Testimonials from "@/components/sections/Testimonials";
-
+import AILAB from "@/components/sections/AILAB";
+import Mentorship from "@/components/sections/Mentorship";
+import CTASection from "@/components/sections/CTASection";
 export default function Home() {
   return (
   <main>
     <Hero/>
-    <About/>
     <Services/>
-    <Testimonials/>
+    <AILAB/>
+    <Mentorship/>
     <CTASection/>
-    <Contact/>
   </main>
   );
 }
