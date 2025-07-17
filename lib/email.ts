@@ -46,7 +46,4 @@ export const sendEmail = async (data: z.infer<typeof formSchema>) => {
         console.error('Error sending email:', error);
         return { success: false, message: "Failed to send email. Please try again." };
     }
-
-
-    console.log(data);
-} 
+}; 
