@@ -15,11 +15,11 @@ const transporter = nodemailer.createTransport({
 })
 
 export const sendEmail = async (data: z.infer<typeof formSchema>) => {
-     try {
+    try {
         const { name, email, phone, message } = data;
-        
+
         await transporter.sendMail({
-            from: `"Contact Form" <${process.env.ZOHO_EMAIL}>`,
+            from: `"Contact Form" <${process.env.EMAIL_USER}>`,
             to: 'habeeb.s@halalelites.dev',
             subject: `New Contact Form Submission from ${name}`,
             html: `
@@ -40,13 +40,10 @@ export const sendEmail = async (data: z.infer<typeof formSchema>) => {
                 </div>
             `,
         });
-        
+
         return { success: true, message: "Email sent successfully!" };
     } catch (error) {
         console.error('Error sending email:', error);
         return { success: false, message: "Failed to send email. Please try again." };
     }
-
-
-    console.log(data);
-} 
+}; 
