@@ -21,7 +21,7 @@ export function MobileMenu() {
       {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-background backdrop-blur-sm md:hidden">
-          <div className="fixed right-5 w-full max-w-md bg-background border-l  animate-in slide-in-from-right duration-300">
+          <div className="mx-auto w-full  bg-background border-l  animate-in slide-in-from-right duration-300">
 
             {/* Header */}
              {/* Header */}
