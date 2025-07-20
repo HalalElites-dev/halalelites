@@ -229,7 +229,7 @@ export const FOOTER_TEXT =
 export const FOOTER_LINKS = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
-  { label: "Cookie Settings", href: "/cookie-settings" },
+ 
 ];
 
 export const SOCIAL_LINKS: { name: string; url: string; icon: LucideIcon }[] = [

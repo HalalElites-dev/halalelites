@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FOOTER_TEXT, SITE_TITLE, SOCIAL_LINKS, FOOTER_LINKS } from "@/lib/constants"
+import { FOOTER_TEXT, SITE_TITLE, SOCIAL_LINKS } from "@/lib/constants"
 import Image from "next/image"
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -108,7 +108,7 @@ const Footer = () => {
         {/* Bottom section - Fixed: Moved outside the main grid */}
         <div className="flex flex-col sm:flex-row justify-between items-center pt-8 mt-8 border-t border-accent-foreground">
           <p className="text-sm  mb-4 sm:mb-0">© {currentYear} {SITE_TITLE}. All rights reserved.</p>
-          <div className="flex items-center gap-6">
+          {/* <div className="flex items-center gap-6">
             {FOOTER_LINKS.map((link) => (
               <Link
                 key={link.label}
@@ -118,7 +118,7 @@ const Footer = () => {
                 {link.label}
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
