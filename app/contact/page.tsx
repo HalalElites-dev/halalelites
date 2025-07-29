@@ -156,7 +156,7 @@ const Page = () => {
                           <Input
                             placeholder="Name"
                             {...field}
-                            className="px-4 py-3 bg-background/10 border rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
+                            className="px-4 py-3 bg-background/50 border rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
                           />
                         </FormControl>
                         <FormMessage />
@@ -178,7 +178,7 @@ const Page = () => {
                             type="email"
                             placeholder="Email"
                             {...field}
-                            className="px-4 py-3 bg-background/0 border rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
+                            className="px-4 py-3 bg-background/50 border rounded-lg focus:outline-none focus:border-brand-primary transition-colors font-mono"
                           />
                         </FormControl>
                         <FormMessage />
