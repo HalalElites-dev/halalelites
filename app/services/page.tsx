@@ -124,10 +124,10 @@ const page = () => {
                 ))}
               </div>
 
-              {/* Button stays at the very bottom */}
+              
               <Button
                 size={"xl"}
-                className="bg-brand-primary hover:bg-brand-primary px-8 py-4 rounded-md text-sm font-mono transition-all duration-300 hover:scale-105 mt-auto"
+                className="bg-brand-primary hover:bg-brand-primary/90 px-8 py-4 rounded-md text-sm font-mono transition-all duration-300 mt-auto"
               >
                 <Link className="text-lg" href={"/contact"}>
                   {">"} {HERO_CTA_TEXT}

@@ -225,7 +225,7 @@ export const PRICING_PLANS = [
 
 // Footer Info
 export const FOOTER_TEXT =
-  "© 2025 Building the future of halal tech, one ethical line of code at a time. Serving Muslim businesses and developers worldwide.";
+  "Building the future of halal tech, one ethical line of code at a time. Serving Muslim businesses and developers worldwide.";
 export const FOOTER_LINKS = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },

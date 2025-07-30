@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Left section - Brand and description */}
           <div className="lg:col-span-1">
             <div className="flex items-center mb-4 gap-2">
-              <Link href="/" className="flex items-center space-x-2">
+             
                 <Image suppressHydrationWarning
                   src="/LogoW.png"
                   alt="Logo"
@@ -27,7 +27,7 @@ const Footer = () => {
                   height={32}
                   className="hidden dark:block"
                 />
-              </Link>
+           
             </div>
             <p className="text-primary text-sm leading-relaxed mb-6 max-w-xs font-mono">{FOOTER_TEXT}</p>
             <div className="flex items-center gap-4">
@@ -40,7 +40,7 @@ const Footer = () => {
                   className="transition-colors"
                 >
                   <span className="sr-only">{link.name}</span>
-                  <link.icon className="h-5 w-5 text-primary " />
+                  <link.icon className="h-5 w-5 text-primary hover:text-brand-primary" />
                 </Link>
               ))}
             </div>
@@ -106,8 +106,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom section - Fixed: Moved outside the main grid */}
-        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 mt-8 border-t border-accent-foreground">
-          <p className="text-sm  mb-4 sm:mb-0">© {currentYear} {SITE_TITLE}. All rights reserved.</p>
+        <div className="flex flex-col sm:flex-row justify-center items-center pt-8 mt-8 border-t border-accent-foreground">
+          <p className="text-sm mb-4 sm:mb-0">© {currentYear} {SITE_TITLE}. All rights reserved.</p>
           {/* <div className="flex items-center gap-6">
             {FOOTER_LINKS.map((link) => (
               <Link
