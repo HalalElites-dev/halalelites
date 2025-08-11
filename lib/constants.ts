@@ -1,5 +1,4 @@
 import {
-  XIcon,
   Github,
   Linkedin,
   LucideIcon,
@@ -15,9 +14,8 @@ import {
   Brain,
   Sparkle,
   Lightbulb,
+  X,
 } from "lucide-react";
-
-// Site Metadata
 export const SITE_TITLE = "HalalElites";
 export const SITE_TAGLINE = "Boost your productivity with AI-powered tools.";
 export const SITE_URL = "https://halalelites.dev";
@@ -236,7 +234,7 @@ export const SOCIAL_LINKS: { name: string; url: string; icon: LucideIcon }[] = [
   {
     name: "X",
     url: "https://x.com/halalelites",
-    icon: XIcon,
+    icon: X,
   },
   {
     name: "GitHub",
