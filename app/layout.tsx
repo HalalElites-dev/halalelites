@@ -20,8 +20,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Halal Elites",
-  description: "Tech foundations for what's next — halal, clean, and fast.",
+  title: "HalalElites – Halal Web Development for Muslim Businesses",
+  description: "Custom-coded, mobile-first, SEO-friendly websites built for Muslim-owned businesses. Fast, ethical, and value-aligned.",
 }
 
 

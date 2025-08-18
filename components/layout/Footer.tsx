@@ -53,22 +53,22 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold text-primary mb-4 font-sans">QUICK LINKS</h3>
               <ul className="space-y-3 font-mono ">
+               
                 <li>
+                  <Link href="/about" className="  transition-colors text-sm hover:text-brand-primary ">
+                    ./about
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/portfolio" className="  transition-colors text-sm hover:text-brand-primary">
+                    ./portfolio
+                  </Link>
+                </li>
+                 <li>
                   <Link href="/services" className=" = transition-colors text-sm hover:text-brand-primary ">
                     ./services
                   </Link>
                 </li>
-                <li>
-                  <Link href="/ailab" className="  transition-colors text-sm hover:text-brand-primary ">
-                    ./ai-lab
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/mentorship" className="  transition-colors text-sm hover:text-brand-primary">
-                    ./mentorship
-                  </Link>
-                </li>
-                
               </ul>
             </div>
 
@@ -83,13 +83,13 @@ const Footer = () => {
                   Web Applications
                 </li>
                 <li className="transition-colors text-md hover:text-brand-primary">
-                  Digital Products
+                  E-commerce Solutions
                 </li>
               </ul>
             </div>
-            {/* Coming soon */}
+            {/* Future Vision */}
             <div>
-              <h3 className="font-semibold text-primary mb-4 font-sans">Coming Soon</h3>
+              <h3 className="font-semibold text-primary mb-4 font-sans">Future Vision</h3>
               <ul className="space-y-3 font-mono  ">
                 <li className="transition-colors text-md hover:text-brand-primary">
                   AI Lab

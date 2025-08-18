@@ -1,15 +1,15 @@
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
-import AILAB from "@/components/sections/AILAB";
-import Mentorship from "@/components/sections/Mentorship";
 import CTASection from "@/components/sections/CTASection";
+// import FutureVision from "@/components/sections/FutureVision";
+// import Portfolio from "@/components/sections/Portfolio";
 export default function Home() {
   return (
   <main>
     <Hero/>
     <Services/>
-    <AILAB/>
-    <Mentorship/>
+    {/* <FutureVision/> */}
+    {/* <Portfolio/> */}
     <CTASection/>
   </main>
   );

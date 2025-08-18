@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { formSchema } from "@/lib/schemas";
 import { sendEmail } from "@/lib/email";
+import HolographicBackground from "@/lib/bgAnimated";
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -56,6 +57,7 @@ const Page = () => {
 
   return (
     <section id="contact" className="relative bg-background py-24 px-6 ">
+      <HolographicBackground variant="single"/>
       <div className="relative max-w-7xl mx-auto">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] rounded-full blur-3xl animate-holographic holographic-gradient opacity-5"></div>
@@ -69,12 +71,12 @@ const Page = () => {
               Contact Us
             </span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold mb-8 font-sans">
+          <h1 className="text-6xl md:text-6xl font-bold mb-8 font-sans">
             Get in Touch
           </h1>
         </div>
 
-        <div className="relative grid lg:grid-cols-2 gap-16 items-start ">
+        <div className="relative grid lg:grid-cols-2 gap-16 justify-center md:items-start ">
           {/* Left Side */}
           <div className="space-y-8 mt-6">
             <div>
@@ -110,7 +112,7 @@ const Page = () => {
                   <div className="text-lg font-mono uppercase tracking-wider mb-1">
                     Email
                   </div>
-                  <div className="text-lg font-mono">
+                  <div className="md:text-lg font-mono">
                     habeeb.s@halalelites.dev
                   </div>
                 </div>
@@ -132,7 +134,7 @@ const Page = () => {
           </div>
 
           {/* Right Side */}
-          <div className="glass-effect rounded-2xl p-8 h-full">
+          <div className="glass-effect rounded-2xl p-8 md:h-full">
             <h3 className="text-2xl font-bold font-mono mb-8 uppercase tracking-wider">
               Make An Appointment
             </h3>
@@ -246,7 +248,7 @@ const Page = () => {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-4 rounded-lg font-mono text-lg transition-all flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary/90 disabled:opacity-50"
+                    className="w-full py-6 rounded-lg font-mono text-md md:text-lg transition-all flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary/90 disabled:opacity-50"
                   >
                     {isLoading ? "sending..." : "send_message"}
                     <Send className="h-5 w-5" />

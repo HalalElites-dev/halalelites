@@ -65,7 +65,7 @@
   /* ===== LIGHT MODE COLORS ===== */
 
   /* Main Page Colors */
-  --background: oklch(1 0 0); /* Main page background (pure white) */
+  --background:  #F2F3F4; /* Main page background (pure white) */
   --foreground: oklch(0.145 0 0); /* Main text color (dark gray/black) */
 
   /* glass effect */
@@ -234,44 +234,7 @@
 }
 
 /* ===== KEYFRAMES ===== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes holographic {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.animate-holographic {
-  animation: holographic 8s ease-in-out infinite;
-  background-size: 200% 200%;
-}
-
-.holographic-gradient {
-  background: linear-gradient(45deg, var(--brand-primary));
-}
 
 
 /* glass effects for navigation instead of using bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 */
@@ -279,6 +242,7 @@
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
+  
 }
 
 
@@ -303,4 +267,9 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--brand-primary);
+}
+
+::selection {
+  background-color: var(--brand-primary); /* A common blue color, you can change this to match your theme */
+  color: var(--primary-foreground); /* Sets the text color to white for better contrast */
 }

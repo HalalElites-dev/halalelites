@@ -1,30 +1,26 @@
 import {
-  Github,
-  Linkedin,
-  LucideIcon,
   Target,
   Eye,
   Heart,
-  Bot,
+  Timer,
   Code,
-  Package,
   Smartphone,
   Users,
-  Cog,
-  Brain,
-  Sparkle,
-  Lightbulb,
-  X,
+  Globe,
+  Layout,
+  TrendingUp,
 } from "lucide-react";
+import { FaXTwitter, FaGithub, FaLinkedin } from "react-icons/fa6";
+
 export const SITE_TITLE = "HalalElites";
 export const SITE_TAGLINE = "Boost your productivity with AI-powered tools.";
 export const SITE_URL = "https://halalelites.dev";
 
 // Navigation Links
 export const NAV_LINKS = [
+  { label: "./about", href: "/about" },
+  { label: "./portfolio", href: "/portfolio" },
   { label: "./services", href: "/services" },
-  { label: "./ai-lab", href: "/ailab" },
-  { label: "./mentorship", href: "/mentorship" },
   { label: "./contact", href: "/contact" },
 ];
 
@@ -33,17 +29,17 @@ export const HERO_HEADING = "Tech That\nHonors Values";
 export const HERO_SUBTEXT =
   "We build web foundations for Muslim businesses and developers who refuse to compromise on their deen. Fast, clean, and halal";
 export const HERO_CTA_TEXT = "deploy_with_us";
-export const HERO_CTA_LINK = "/services";
+export const HERO_CTA_LINK = "https://calendly.com/halal-elites/30min";
 export const HERO_2NDARY_CTA_TEXT = "learn_more";
 
 // About Section
 export const ABOUT_HEADING = "What We Build";
 export const ABOUT_SUBTEXT = "// Solutions that honor your values";
 export const ABOUT_CONTENT = `
-At HalalElites, we believe that productivity should be effortless. Our platform combines advanced AI technology with intuitive design to help you manage tasks, set priorities, and achieve your goals efficiently.
+Navigating the digital world shouldn't compromise your principles. Our web development services are designed to help you build and grow your online presence in a way that aligns with your faith.
 
-  Whether you're a freelancer, a small business owner, or part of a large team, HalalElites adapts to your workflow and enhances your productivity.
-`;
+We believe your platform should reflect your values. Whether you're a startup or an established organization, we create custom websites that are advanced and easy to manage, and also uphold your identity and mission.
+  `;
 export const ABOUT = [
   {
     title: "Our Mission",
@@ -66,39 +62,39 @@ export const ABOUT = [
 ];
 
 // AILAB Section
-export const AILAB_HEADING = "AI Lab";
-export const AILAB_SUBTEXT =
-  "// We're experimenting with ethical AI integrations that enhance human capability without compromising our values";
-export const AILAB_CONTENT = [
-  {
-    title: "Ethical AI Workflows",
-    description:
-      "Exploring AI tools that respects Islamic values while enhancing productivity",
-    icon: Brain,
-  },
-  {
-    title: "Smart Business Tools",
-    description:
-      "AI-enhanced calculators, planners, and more decision-making tools",
-    icon: Cog,
-  },
-  {
-    title: "Automated Workflows",
-    description:
-      "Streamline repetitive tasks while maintaining human oversight",
-    icon: Sparkle,
-  },
-  {
-    title: "Custom AI Solutions",
-    description: "Tailored AI integrations for your specific business needs",
-    icon: Lightbulb,
-  },
-];
+// export const AILAB_HEADING = "AI Lab";
+// export const AILAB_SUBTEXT =
+//   "// We're experimenting with ethical AI integrations that enhance human capability without compromising our values";
+// export const AILAB_CONTENT = [
+//   {
+//     title: "Ethical AI Workflows",
+//     description:
+//       "Exploring AI tools that respects Islamic values while enhancing productivity",
+//     icon: Brain,
+//   },
+//   {
+//     title: "Smart Business Tools",
+//     description:
+//       "AI-enhanced calculators, planners, and more decision-making tools",
+//     icon: Cog,
+//   },
+//   {
+//     title: "Automated Workflows",
+//     description:
+//       "Streamline repetitive tasks while maintaining human oversight",
+//     icon: Sparkle,
+//   },
+//   {
+//     title: "Custom AI Solutions",
+//     description: "Tailored AI integrations for your specific business needs",
+//     icon: Lightbulb,
+//   },
+// ];
 
 // Mentorship Section
-export const MENTORSHIP_HEADING = "Level up Your Skills";
-export const MENTORSHIP_SUBTEXT =
-  "// Personalized  coaching that builds both technical skills and the discipline needed for long-term success. Faith-centered, community-driven development";
+// export const MENTORSHIP_HEADING = "Level up Your Skills";
+// export const MENTORSHIP_SUBTEXT =
+//   "// Personalized  coaching that builds both technical skills and the discipline needed for long-term success. Faith-centered, community-driven development";
 
 // Contact Section
 export const CONTACT_HEADING = "Get in Touch";
@@ -133,58 +129,89 @@ export const TESTIMONIALS = [
 
 // Services Section
 export const SERVICES_HEADING = "Building Digital Excellence with Purpose";
-export const SERVICES_SUBTEXT =
-  "// Halal Elites specializes in empowering small businesses across the US and Canada with top-tier web design and development. We meticulously hand-code each site, ensuring superior performance and strong search engine rankings to drive more customers and revenue your way. Plus, you can count on us for all your ongoing edits and support—we're here to help you thrive for the long haul.";
+export const SERVICES_SUBTEXT = "Tailored solutions for the Muslim businesses in the US and Canada. Our sites drive traffic and revenue, and we offer ongoing support to help your business grow ";
 export const SERVICES = [
   {
-    title: "Landing Pages",
+    title: "Custom Web Development",
     subtitle: "for Muslim Businesses",
     description:
-      "Fast, clean, and halal landing pages that convert visitors into customers.",
+      "We build fast, clean, and unique websites from the ground up, prioritizing a flawless experience on mobile devices. Every line of code is written specifically for your business, ensuring optimal performance and design.",
     icon: Code,
     available: true,
     gradient: "from-brand-primary to-blue-500",
   },
   {
-    title: "Web Applications",
-    subtitle: "Prayer Tracker • Zakat Calculator",
+    title: "Mobile First Design",
+    subtitle: "Seamless Experience on Any Device",
     description:
-      "Faith-based web tools that serve the Muslim community with purpose.",
+      "Our designs are crafted to look and perform beautifully on smartphones and tablets, ensuring your audience enjoys a smooth, accessible experience wherever they are.",
     icon: Smartphone,
     available: true,
     gradient: "from-brand-primary to-pink-500",
   },
   {
-    title: "AI Integration",
-    subtitle: "Ethical & Intelligent",
+    title: "Performance Optimization",
+    subtitle: "Fast, Efficient, and User-Friendly",
     description:
-      "Building AI tools that enhance human capability while respecting Islamic values.",
-    icon: Bot,
+      "Slow websites drive customers away. We fine-tune your site's code, images to ensure lightning-fast loading speeds.",
+    icon: Timer,
     shape: "sphere",
-    available: false,
-    comingSoon: true,
+    available: true,
     gradient: "from-brand-primary to-purple-500",
   },
   {
-    title: "Dev Mentorship",
-    subtitle: "Faith-Based Coaching",
+    title: "Search Engine Optimization",
+    subtitle: "Boost Your Online Presence",
     description:
-      "1:1 mentorship combining technical skills with Islamic principles of discipline.",
+      "We implement best practices to improve your website's visibility on search engines.",
+    icon: TrendingUp,
+    available: true,
+    gradient: "from-brand-primary to-purple-500",
+  },
+   {
+    title: "Ongoing Support",
+    subtitle: "Maintenance & Updates",
+    description:
+      "We offer ongoing support to ensure your website remains up-to-date and continues to perform at its best.",
     icon: Users,
-    available: false,
-    comingSoon: true,
+    available: true,
     gradient: "from-brand-primary to-purple-500",
   },
   {
-    title: "Digital Products",
-    subtitle: "Templates • Kits • Resources",
+    title: "Web Redesign",
+    subtitle: "Revamp Your Online Presence",
     description:
-      "Ready-made solutions that save time and accelerate your development journey.",
-    icon: Package,
-    available: false,
-    comingSoon: true,
+      "We give your website a fresh look and improved functionality.",
+    icon: Layout,
+    available: true,
     gradient: "from-brand-primary to-cyan-500",
   },
+];
+
+
+// process plan
+
+export const PROCESS_PLAN = [
+  {
+    step: 1,
+    title: "Initial Consultation & Strategy",
+    description:
+      "We discuss your business needs, goals, and vision to create a tailored plan."
+  },
+  {
+    step: 2,
+    title: "Design & Development",
+    description:
+      "Crafting a unique website that reflects your brand and engages your audience."
+  },
+  
+  {
+    step: 3,
+    title: "Testing & Launch",
+    description:
+      "Thorough testing to ensure everything works perfectly before going live."
+  },
+ 
 ];
 
 // Pricing Plans (if applicable)
@@ -230,20 +257,59 @@ export const FOOTER_LINKS = [
  
 ];
 
-export const SOCIAL_LINKS: { name: string; url: string; icon: LucideIcon }[] = [
+
+export const portfolioItems =[
+   {
+    title: "Masjid Al-Noor",
+    category: "Landing Page",
+    description: "Landing page for a local mosque.",
+    image: "/placeholder.webp",
+    technologies: ["Next.js", "Tailwind", "Vercel"],
+    status: "Live",
+    color: "var(--brand-cyan)",
+    icon: Globe,
+    link: 'https://masjid-al-noor.com'
+  },
+  {
+    title: "Halal Bites Restaurant",
+    category: "Multi-Page Website",
+    description: "Complete restaurant site with menu and reservations.",
+    image: "/placeholder.webp",
+    technologies: ["React", "Node.js", "MongoDB"],
+    status: "Live",
+    color: "var(--brand-blue)",
+    icon: Smartphone,
+    link: 'https://halal-bites-restaurant.com'
+  },
+  {
+    title: "Islamic Learning Hub",
+    category: "Educational Platform",
+    description: "E-learning platform with course management system.",
+    image: "/placeholder.webp",
+    technologies: ["Next.js", "Supabase", "Stripe"],
+    status: "In Development",
+    color: "var(--brand-purple)",
+    icon: Code,
+    link: 'https://islamic-learning-hub.com'
+  },
+]
+
+import type { IconType } from "react-icons";
+
+export const SOCIAL_LINKS: { name: string; url: string; icon:  IconType }[] = [
   {
     name: "X",
     url: "https://x.com/halalelites",
-    icon: X,
+    icon: FaXTwitter,
   },
   {
     name: "GitHub",
     url: "https://github.com/aybheeb",
-    icon: Github,
+    icon: FaGithub,
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/company/halal-elites",
-    icon: Linkedin,
+    icon: FaLinkedin,
   },
 ];
