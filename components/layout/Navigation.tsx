@@ -14,13 +14,13 @@ export function Navigation({}) {
   };
 
   return (
-    <nav className="flex flex-col space-y-4 md:flex-row items-center md:space-x-8 md:space-y-0">
+    <nav className="flex flex-col space-y-4 lg:flex-row items-center lg:space-x-8 md:space-y-0">
       {NAV_LINKS.map((link) => (
         <Link
           key={link.href} 
           href={link.href}
           className={cn(
-            " transition-colors hover:text-brand-primary relative py-1 text-lg md:text-sm font-medium font-mono",
+            " transition-colors hover:text-brand-primary relative py-1 text-lg md:text-xl lg:text-sm font-medium font-mono",
             
           )}
           onClick={(e) => handleClick(e, link.href)}

@@ -41,7 +41,7 @@ export function Header() {
                         </Link>
 
                         {/* Desktop Navigation - Right section */}
-                        <div className="hidden md:flex items-center space-x-8">
+                        <div className="hidden lg:flex items-center space-x-8">
                             <Navigation />
                             <Button className="bg-brand-primary hover:bg-brand-primary/90 px-4 py-2 rounded-md text-sm font-mono transition-all">
                                 <Link
@@ -56,7 +56,7 @@ export function Header() {
                         </div>
 
                         {/* Mobile Navigation - Right section */}
-                        <div className="md:hidden flex items-center space-x-2">
+                        <div className="md:flex flex items-center space-x-2">
                             <ThemeToggle/>
                             <Button
                                 variant="ghost"
@@ -73,7 +73,7 @@ export function Header() {
 
             {/* Mobile Menu Overlay - Full screen with proper glass effect */}
             {isMobileMenuOpen && (
-                <div className="fixed inset-0 z-50 md:hidden">
+                <div className="fixed inset-0 z-50 md:flex">
                     {/* Full screen glass backdrop */}
                     <div className="absolute inset-0  backdrop-blur-md" />
                     
