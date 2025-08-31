@@ -20,7 +20,7 @@ export function Navigation({}) {
           key={link.href} 
           href={link.href}
           className={cn(
-            " transition-colors hover:text-brand-primary relative py-1 text-lg md:text-xl lg:text-sm font-medium font-mono",
+            " transition-colors hover:text-brand-primary relative py-1 text-lg md:text-2xl lg:text-sm font-medium font-mono",
             
           )}
           onClick={(e) => handleClick(e, link.href)}

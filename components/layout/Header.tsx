@@ -56,7 +56,7 @@ export function Header() {
                         </div>
 
                         {/* Mobile Navigation - Right section */}
-                        <div className="md:flex flex items-center space-x-2">
+                        <div className="md:flex flex items-center space-x-2 lg:hidden">
                             <ThemeToggle/>
                             <Button
                                 variant="ghost"
